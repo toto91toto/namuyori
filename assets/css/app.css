@@ -1,0 +1,72 @@
+
+@import url(../vendor/bootstrap-icons/font/bootstrap-icons.css);
+@import url(../vendor/hs-mega-menu/dist/hs-mega-menu.min.css);
+@import url(../vendor/aos/dist/aos.css);
+@import url(theme.min.css);
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Nanum+Pen+Script&display=swap');
+
+.gamja-flower-regular {
+	font-family: "Gamja Flower", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+    font-size: x-large;
+}
+
+.navbar-brand-logo {
+    max-width: 13rem !important;
+}
+
+#search-input{
+    max-width: 22rem;
+    min-width: 13rem;
+	font-size: 17px;
+}
+
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #ff2e2e;
+    --bs-btn-border-color: #ff2e2e;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #f90000;
+    --bs-btn-hover-border-color: #f90000;
+    --bs-btn-focus-shadow-rgb: 85,145,255;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #ff2e2e;
+    --bs-btn-active-border-color: #ff2e2e;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #ff2e2e;
+    --bs-btn-disabled-border-color: #ff2e2e;
+}
+
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: #ff2e2e;
+}
+
+.navbar .dropdown-menu {
+    border-top: none;
+}
+.dropdown-item {
+    font-size: large;
+}
+.dropdown-header {
+    font-size: x-large;
+    font-weight: normal;
+}
+
+.dropdown-header {
+    color: #ff2e2e;
+}
+
+.go-to:focus:hover, .go-to:hover {
+    background-color: #ff2e2e;
+}
+
+.main-content{
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.card-title:hover {
+    color: #ff2e2e;
+  }
