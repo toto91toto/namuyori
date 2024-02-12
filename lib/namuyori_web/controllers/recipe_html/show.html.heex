@@ -1,0 +1,22 @@
+<!--<.header>
+  Recipe <%= @recipe.id %>
+  <:subtitle>This is a recipe record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/recipes/#{@recipe}/edit"}>
+      <.button>Edit recipe</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Title"><%= @recipe.title %></:item>
+  <:item title="Description"><%= @recipe.description %></:item>
+  <:item title="Preparation time"><%= @recipe.preparation_time %></:item>
+  <:item title="Cooking time"><%= @recipe.cooking_time %></:item>
+  <:item title="Total time"><%= @recipe.total_time %></:item>
+  <:item title="Dificulty level"><%= @recipe.dificulty_level %></:item>
+  <:item title="Url image"><%= @recipe.url_image %></:item>
+  <:item title="Url video"><%= @recipe.url_video %></:item>
+</.list>
+
+<.back navigate={~p"/recipes"}>Back to recipes</.back>-->
