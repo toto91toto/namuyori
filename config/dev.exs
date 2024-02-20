@@ -5,7 +5,7 @@ config :namuyori, Namuyori.Repo,
   username: "postgres",
   password: "root",
   hostname: "localhost",
-  database: "namuyori_dev",
+  database: "namuyori",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -23,7 +23,7 @@ config :namuyori, NamuyoriWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "cMIKoF23m7uubDqYLPSJMyVLycC+8xRDYMh8LLt/hZiyFwoRmYWlPjt5MwEVtiDE",
+  secret_key_base: "xXZueZjkexSTSmCMIfmHWNABBD2i/HIXTIM48UvPQvHK+6mLo6Eg1wBkWfiU/7Ju",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
   ]
@@ -56,6 +56,7 @@ config :namuyori, NamuyoriWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"priv/gettext/.*(po)$",
       ~r"lib/namuyori_web/(controllers|live|components)/.*(ex|heex)$"
     ]
   ]
@@ -75,3 +76,6 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Include HEEx debug annotations as HTML comments in rendered markup
 config :phoenix_live_view, :debug_heex_annotations, true
+
+# Disable swoosh api client as it is only required for production adapters.
+config :swoosh, :api_client, false

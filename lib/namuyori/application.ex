@@ -12,6 +12,8 @@ defmodule Namuyori.Application do
       Namuyori.Repo,
       {DNSCluster, query: Application.get_env(:namuyori, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Namuyori.PubSub},
+      # Start the Finch HTTP client for sending emails
+      {Finch, name: Namuyori.Finch},
       # Start a worker by calling: Namuyori.Worker.start_link(arg)
       # {Namuyori.Worker, arg},
       # Start to serve requests, typically the last entry

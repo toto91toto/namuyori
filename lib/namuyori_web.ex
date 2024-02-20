@@ -43,6 +43,7 @@ defmodule NamuyoriWeb do
         layouts: [html: NamuyoriWeb.Layouts]
 
       import Plug.Conn
+      import NamuyoriWeb.Gettext
 
       unquote(verified_routes())
     end
@@ -57,6 +58,8 @@ defmodule NamuyoriWeb do
     end
   end
 
+  @spec live_component() ::
+          {:__block__, [], [{:__block__, [], [...]} | {:use, [...], [...]}, ...]}
   def live_component do
     quote do
       use Phoenix.LiveComponent
@@ -84,6 +87,7 @@ defmodule NamuyoriWeb do
       import Phoenix.HTML
       # Core UI components and translation
       import NamuyoriWeb.CoreComponents
+      import NamuyoriWeb.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS

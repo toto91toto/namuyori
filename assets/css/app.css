@@ -69,4 +69,9 @@
 
 .card-title:hover {
     color: #ff2e2e;
-  }
+}
+
+.nav-link-sm{
+    padding: 0 !important;
+    font-size: medium;
+}

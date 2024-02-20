@@ -1,5 +1,8 @@
 import Config
 
+# Only in tests, remove the complexity from the password hashing algorithm
+config :pbkdf2_elixir, :rounds, 1
+
 # Configure your database
 #
 # The MIX_TEST_PARTITION environment variable can be used
@@ -7,7 +10,7 @@ import Config
 # Run `mix help test` for more information.
 config :namuyori, Namuyori.Repo,
   username: "postgres",
-  password: "root",
+  password: "postgres",
   hostname: "localhost",
   database: "namuyori_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
@@ -17,8 +20,14 @@ config :namuyori, Namuyori.Repo,
 # you can enable the server option below.
 config :namuyori, NamuyoriWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "md5RZP46iMcvaA/S3JNgJwz4qfCRoDOHM6nMLJ/LPTCf6JFamVWEgAfnSGgxCGW8",
+  secret_key_base: "Pwszq5Qae8v/cpKPSKi2VvNVxQAaCZmRwExG2CMLh0Q99n+yTopDDS60LMdWqT6e",
   server: false
+
+# In test we don't send emails.
+config :namuyori, Namuyori.Mailer, adapter: Swoosh.Adapters.Test
+
+# Disable swoosh api client as it is only required for production adapters.
+config :swoosh, :api_client, false
 
 # Print only warnings and errors during test
 config :logger, level: :warning

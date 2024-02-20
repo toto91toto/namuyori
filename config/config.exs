@@ -20,7 +20,16 @@ config :namuyori, NamuyoriWeb.Endpoint,
     layout: false
   ],
   pubsub_server: Namuyori.PubSub,
-  live_view: [signing_salt: "qO2uoO+L"]
+  live_view: [signing_salt: "DZCdh+g/"]
+
+# Configures the mailer
+#
+# By default it uses the "Local" adapter which stores the emails
+# locally. You can see the emails in your browser, at "/dev/mailbox".
+#
+# For production it's recommended to configure a different adapter
+# at the `config/runtime.exs`.
+config :namuyori, Namuyori.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,
