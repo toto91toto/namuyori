@@ -21,6 +21,10 @@ defmodule NamuyoriWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    live "/categories", CategoryLive.Index, :index
+    live "/categories/new", CategoryLive.Index, :new
+
+    live "/categories/:slug", CategoryLive.Show, :show
   end
 
   # Other scopes may use custom stacks.

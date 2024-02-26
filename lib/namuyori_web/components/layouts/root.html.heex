@@ -71,6 +71,14 @@
                   Log out
                 </.link>
               </li>
+              <li class="nav-item">
+                <.link
+                  href={~p"/categories"}
+                  class="nav-link nav-link-sm"
+                >
+                  Categories
+                </.link>
+              </li>
             <% else %>
               <li class="nav-item">
                 <.link
@@ -121,10 +129,10 @@
                         <div class="row">
                           <div class="col-sm mb-3 mb-sm-0">
                             <span class="dropdown-header">카테고리별 레시피</span>
-                            <a class="dropdown-item " href="#">애피타이저</a>
-                            <a class="dropdown-item " href="#">전채요리</a>
-                            <a class="dropdown-item " href="#">메인 요리</a>
-                            <a class="dropdown-item " href="#">디저트</a>
+                            <a class="dropdown-item " href={~p"/categories/애피타이저"}>애피타이저</a>
+                            <a class="dropdown-item " href={~p"/categories/전채요리"}>전채요리</a>
+                            <a class="dropdown-item " href={~p"/categories/메인-요리"}>메인 요리</a>
+                            <a class="dropdown-item " href={~p"/categories/디저트"}>디저트</a>
                             <a class="dropdown-item " href="#">음료</a>
                             <a class="dropdown-item " href="#">아침식사/브런치</a>
                           </div>
