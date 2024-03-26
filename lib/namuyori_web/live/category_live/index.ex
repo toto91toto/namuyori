@@ -1,12 +1,12 @@
 defmodule NamuyoriWeb.CategoryLive.Index do
   use NamuyoriWeb, :live_view
 
-  alias Namuyori.Recipes
-  alias Namuyori.Recipes.Category
+  alias Namuyori.CookingRecipes
+  alias Namuyori.CookingRecipes.Category
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, stream(socket, :categories, Recipes.list_categories())}
+    {:ok, stream(socket, :categories, CookingRecipes.list_categories())}
   end
 
   @impl true
@@ -17,7 +17,7 @@ defmodule NamuyoriWeb.CategoryLive.Index do
   defp apply_action(socket, :edit, %{"id" => id}) do
     socket
     |> assign(:page_title, "Edit Category")
-    |> assign(:category, Recipes.get_category!(id))
+    |> assign(:category, CookingRecipes.get_category!(id))
   end
 
   defp apply_action(socket, :new, _params) do
@@ -39,8 +39,8 @@ defmodule NamuyoriWeb.CategoryLive.Index do
 
   @impl true
   def handle_event("delete", %{"id" => id}, socket) do
-    category = Recipes.get_category!(id)
-    {:ok, _} = Recipes.delete_category(category)
+    category = CookingRecipes.get_category!(id)
+    {:ok, _} = CookingRecipes.delete_category(category)
 
     {:noreply, stream_delete(socket, :categories, category)}
   end

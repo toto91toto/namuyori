@@ -8,7 +8,7 @@ defmodule Namuyori.Accounts.UserNotifier do
     email =
       new()
       |> to(recipient)
-      |> from({"Namuyori", "contact@namuyori.com"})
+      |> from({"Namuyori", "contact@example.com"})
       |> subject(subject)
       |> text_body(body)
 

@@ -6,12 +6,19 @@ defmodule NamuyoriWeb.UserRegistrationLive do
 
   def render(assigns) do
     ~H"""
-        <!-- Form -->
-          <div class="container content-space-3 content-space-t-lg-4 content-space-b-lg-3">
-      <div class="flex-grow-1 mx-auto" style="max-width: 28rem;">
+    <div class="mx-auto max-w-sm mt-3">
+      <.header class="text-center">
+        Register for an account
+        <:subtitle>
+          Already registered?
+          <.link navigate={~p"/users/log_in"} class="font-semibold text-brand hover:underline">
+            Sign in
+          </.link>
+          to your account now.
+        </:subtitle>
+      </.header>
 
-        <!-- Form -->
-          <.simple_form
+      <.simple_form
         for={@form}
         id="registration_form"
         phx-submit="save"
@@ -24,30 +31,14 @@ defmodule NamuyoriWeb.UserRegistrationLive do
           Oops, something went wrong! Please check the errors below.
         </.error>
 
-        <div class="mb-3">
-          <.input field={@form[:email]} type="email" label="Email" required />
-        </div>
-        <div class="mb-3">
-          <.input field={@form[:password]} type="password" label="Password" required />
-        </div>
-
-
+        <.input field={@form[:email]} type="email" label="Email" required />
+        <.input field={@form[:password]} type="password" label="Password" required />
 
         <:actions>
-          <div class="d-grid mb-3">
-            <.button phx-disable-with="Creating account...">Create an account</.button>
-          </div>
-
-          <div class="text-center">
-            <p>Already have an account?<.link navigate={~p"/users/log_in"} class="link">
-            Sign in
-          </.link></p>
-          </div>
+          <.button phx-disable-with="Creating account..." class="w-full">Create an account</.button>
         </:actions>
       </.simple_form>
-      </div>
     </div>
-    <!-- End Form -->
     """
   end
 

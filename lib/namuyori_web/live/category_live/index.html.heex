@@ -1,19 +1,18 @@
-<div class="container content-space-3 content-space-t-lg-4 content-space-b-lg-3">
+<.header>
+  Listing Categories
+  <:actions>
+    <.link patch={~p"/categories/new"}>
+      <.button>New Category</.button>
+    </.link>
+  </:actions>
+</.header>
 
-  <div>
-      <.link patch={~p"/categories/new"}>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#category-modal">New Category</button>
-      </.link>
-  </div>
-
-  <.table
+<.table
   id="categories"
   rows={@streams.categories}
   row_click={fn {_id, category} -> JS.navigate(~p"/categories/#{category}") end}
 >
-  <:col :let={{_id, category}} label="Title"><%= category.title %></:col>
-  <:col :let={{_id, category}} label="Slug"><%= category.slug %></:col>
-  <:col :let={{_id, category}} label="Description"><%= category.description %></:col>
+  <:col :let={{_id, category}} label="Name"><%= category.name %></:col>
   <:action :let={{_id, category}}>
     <div class="sr-only">
       <.link navigate={~p"/categories/#{category}"}>Show</.link>
@@ -40,6 +39,3 @@
     patch={~p"/categories"}
   />
 </.modal>
-</div>
-
-

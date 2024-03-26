@@ -1,83 +1,26 @@
-<div class="container content-space-2 content-space-lg-3">
-  <div class="card main-content">
-      <!-- Heading -->
-      <div class="text-center mx-md-auto mb-5 mb-md-9">
-        <h2 class="gamja-flower-regular"><%= @category.title %></h2>
-        <p class="gamja-flower-regular"><%= @category.description %></p>
-      </div>
-      <!-- End Heading -->
+<.header>
+  Category <%= @category.id %>
+  <:subtitle>This is a category record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/categories/#{@category}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit category</.button>
+    </.link>
+  </:actions>
+</.header>
 
-    <div class="row gamja-flower-regular">
-      <div class="col-lg-12">
-        <div class="row">
-          <div class="card-flush col-sm-6 mb-2">
-            <!-- Card -->
-            <a class="text-center" href="#">
-              <img class="card-img-top" src="../images/quiche.jpg" alt="Image Description">
-              <div class="card-body">
-                <h3 class="card-title">키쉬 로렌</h3>
-      
-              </div>
-            </a>
-            <!-- End Card -->
-          </div>
-          <!-- End Col -->
-      
-          <div class="card-flush col-sm-6 mb-2">
-            <!-- Card -->
-            <a class="text-center" href="#">
-              <img class="card-img-top" src="../images/risotto.jpeg" alt="Image Description">
-              <div class="card-body">
-                <h3 class="card-title">크리미한 세인트 자크 조개 리조또</h3>
-              </div>
-            </a>
-            <!-- End Card -->
-          </div>
-      
-          <div class="card-flush col-sm-6 mb-2">
-            <!-- Card -->
-            <a class="text-center" href="#">
-              <img class="card-img-top" src="../images/salate.jpg" alt="Image Description">
-              <div class="card-body">
-                <h3 class="card-title">그리스 샐러드</h3>
-              </div>
-            </a>
-          </div>
-          <div class="card-flush col-sm-6 mb-2">
-            <!-- Card -->
-            <a class="text-center" href="#">
-              <img class="card-img-top" src="../images/tartiflette.jpeg" alt="Image Description">
-              <div class="card-body">
-                <h3 class="card-title">그라탱 도피누아</h3>
-              </div>
-            </a>
-            <!-- End Card -->
-          </div>
-          <!-- End Col -->
-      
-          <div class="card-flush col-sm-6 mb-2">
-            <!-- Card -->
-            <a class="text-center" href="#">
-              <img class="card-img-top" src="../images/tarte.webp" alt="Image Description">
-              <div class="card-body">
-                <h3 class="card-title">사과 타르트</h3>
-              </div>
-            </a>
-          </div>
-          <!-- End Col -->
-      
-          <div class="card-flush col-sm-6 mb-2">
-            <!-- Card --> 
-            <a class="text-center" href="#">
-              <img class="card-img-top" src="../images/pates2.jpg" alt="Image Description">
-              <div class="card-body">
-                <h3 class="card-title">로크포르 치즈와 브로콜리 파스타</h3>
-              </div>
-            </a>
-          </div>
-          <!-- End Col -->
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<.list>
+  <:item title="Name"><%= @category.name %></:item>
+</.list>
+
+<.back navigate={~p"/categories"}>Back to categories</.back>
+
+<.modal :if={@live_action == :edit} id="category-modal" show on_cancel={JS.patch(~p"/categories/#{@category}")}>
+  <.live_component
+    module={NamuyoriWeb.CategoryLive.FormComponent}
+    id={@category.id}
+    title={@page_title}
+    action={@live_action}
+    category={@category}
+    patch={~p"/categories/#{@category}"}
+  />
+</.modal>

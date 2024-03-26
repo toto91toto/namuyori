@@ -2,11 +2,11 @@ defmodule NamuyoriWeb.CategoryLiveTest do
   use NamuyoriWeb.ConnCase
 
   import Phoenix.LiveViewTest
-  import Namuyori.RecipesFixtures
+  import Namuyori.CookingRecipesFixtures
 
-  @create_attrs %{description: "some description", title: "some title", slug: "some slug"}
-  @update_attrs %{description: "some updated description", title: "some updated title", slug: "some updated slug"}
-  @invalid_attrs %{description: nil, title: nil, slug: nil}
+  @create_attrs %{name: "some name"}
+  @update_attrs %{name: "some updated name"}
+  @invalid_attrs %{name: nil}
 
   defp create_category(_) do
     category = category_fixture()
@@ -20,7 +20,7 @@ defmodule NamuyoriWeb.CategoryLiveTest do
       {:ok, _index_live, html} = live(conn, ~p"/categories")
 
       assert html =~ "Listing Categories"
-      assert html =~ category.description
+      assert html =~ category.name
     end
 
     test "saves new category", %{conn: conn} do
@@ -43,7 +43,7 @@ defmodule NamuyoriWeb.CategoryLiveTest do
 
       html = render(index_live)
       assert html =~ "Category created successfully"
-      assert html =~ "some description"
+      assert html =~ "some name"
     end
 
     test "updates category in listing", %{conn: conn, category: category} do
@@ -66,7 +66,7 @@ defmodule NamuyoriWeb.CategoryLiveTest do
 
       html = render(index_live)
       assert html =~ "Category updated successfully"
-      assert html =~ "some updated description"
+      assert html =~ "some updated name"
     end
 
     test "deletes category in listing", %{conn: conn, category: category} do
@@ -84,7 +84,7 @@ defmodule NamuyoriWeb.CategoryLiveTest do
       {:ok, _show_live, html} = live(conn, ~p"/categories/#{category}")
 
       assert html =~ "Show Category"
-      assert html =~ category.description
+      assert html =~ category.name
     end
 
     test "updates category within modal", %{conn: conn, category: category} do
@@ -107,7 +107,7 @@ defmodule NamuyoriWeb.CategoryLiveTest do
 
       html = render(show_live)
       assert html =~ "Category updated successfully"
-      assert html =~ "some updated description"
+      assert html =~ "some updated name"
     end
   end
 end

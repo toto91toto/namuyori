@@ -5,7 +5,7 @@ config :namuyori, Namuyori.Repo,
   username: "postgres",
   password: "root",
   hostname: "localhost",
-  database: "namuyori",
+  database: "namuyori_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -23,9 +23,10 @@ config :namuyori, NamuyoriWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "xXZueZjkexSTSmCMIfmHWNABBD2i/HIXTIM48UvPQvHK+6mLo6Eg1wBkWfiU/7Ju",
+  secret_key_base: "JtXi1SkNpjVUMCoZ0hY1Dcb/abfisRTEFox0Y3Gc4t/aU6gml0mhPC3wwJZq43sj",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
 # ## SSL Support

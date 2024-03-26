@@ -5,30 +5,20 @@ defmodule NamuyoriWeb.UserForgotPasswordLive do
 
   def render(assigns) do
     ~H"""
-      <!-- Form -->
-    <div class="container content-space-3 content-space-t-lg-4 content-space-b-lg-3">
-      <div class="flex-grow-1 mx-auto" style="max-width: 28rem;">
-        <.simple_form for={@form} id="reset_password_form" phx-submit="send_email">
-        <div class="mb-4">
-          <.input field={@form[:email]} type="email" placeholder="Email" required />
-        </div>
+    <div class="mx-auto max-w-sm mt-3">
+      <.header class="text-center">
+        Forgot your password?
+        <:subtitle>We'll send a password reset link to your inbox</:subtitle>
+      </.header>
 
-          <:actions>
-          <div class="d-grid mb-3">
-          <.button phx-disable-with="Sending...">
-              Send password reset instructions
-            </.button>
-            </div>
-
-          </:actions>
-        </.simple_form>
-
-      </div>
-    </div>
-    <!-- End Form -->
-    <div class="mx-auto max-w-sm">
-
-
+      <.simple_form for={@form} id="reset_password_form" phx-submit="send_email">
+        <.input field={@form[:email]} type="email" placeholder="Email" required />
+        <:actions>
+          <.button phx-disable-with="Sending..." class="w-full">
+            Send password reset instructions
+          </.button>
+        </:actions>
+      </.simple_form>
       <p class="text-center text-sm mt-4">
         <.link href={~p"/users/register"}>Register</.link>
         | <.link href={~p"/users/log_in"}>Log in</.link>

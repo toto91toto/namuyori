@@ -58,8 +58,6 @@ defmodule NamuyoriWeb do
     end
   end
 
-  @spec live_component() ::
-          {:__block__, [], [{:__block__, [], [...]} | {:use, [...], [...]}, ...]}
   def live_component do
     quote do
       use Phoenix.LiveComponent

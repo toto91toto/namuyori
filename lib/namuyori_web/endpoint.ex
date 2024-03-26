@@ -7,7 +7,7 @@ defmodule NamuyoriWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_namuyori_key",
-    signing_salt: "h9WMlBuO",
+    signing_salt: "dSexgxur",
     same_site: "Lax"
   ]
 
@@ -31,6 +31,10 @@ defmodule NamuyoriWeb.Endpoint do
     plug Phoenix.CodeReloader
     plug Phoenix.Ecto.CheckRepoStatus, otp_app: :namuyori
   end
+
+  plug Phoenix.LiveDashboard.RequestLogger,
+    param_key: "request_logger",
+    cookie_key: "request_logger"
 
   plug Plug.RequestId
   plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]

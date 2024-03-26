@@ -20,7 +20,7 @@ config :namuyori, Namuyori.Repo,
 # you can enable the server option below.
 config :namuyori, NamuyoriWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "Pwszq5Qae8v/cpKPSKi2VvNVxQAaCZmRwExG2CMLh0Q99n+yTopDDS60LMdWqT6e",
+  secret_key_base: "JgDqemcnlVoRJlGPiCKk/5Zz1P1oPh+mGb+yOTgtbW3lEJOCFu6bCH8SQ9iLP4EH",
   server: false
 
 # In test we don't send emails.

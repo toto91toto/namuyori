@@ -1,7 +1,7 @@
 defmodule NamuyoriWeb.CategoryLive.FormComponent do
   use NamuyoriWeb, :live_component
 
-  alias Namuyori.Recipes
+  alias Namuyori.CookingRecipes
 
   @impl true
   def render(assigns) do
@@ -19,9 +19,7 @@ defmodule NamuyoriWeb.CategoryLive.FormComponent do
         phx-change="validate"
         phx-submit="save"
       >
-        <.input field={@form[:title]} type="text" label="Title" />
-        <.input field={@form[:slug]} type="text" label="Slug" />
-        <.input field={@form[:description]} type="text" label="Description" />
+        <.input field={@form[:name]} type="text" label="Name" />
         <:actions>
           <.button phx-disable-with="Saving...">Save Category</.button>
         </:actions>
@@ -32,7 +30,7 @@ defmodule NamuyoriWeb.CategoryLive.FormComponent do
 
   @impl true
   def update(%{category: category} = assigns, socket) do
-    changeset = Recipes.change_category(category)
+    changeset = CookingRecipes.change_category(category)
 
     {:ok,
      socket
@@ -44,7 +42,7 @@ defmodule NamuyoriWeb.CategoryLive.FormComponent do
   def handle_event("validate", %{"category" => category_params}, socket) do
     changeset =
       socket.assigns.category
-      |> Recipes.change_category(category_params)
+      |> CookingRecipes.change_category(category_params)
       |> Map.put(:action, :validate)
 
     {:noreply, assign_form(socket, changeset)}
@@ -55,7 +53,7 @@ defmodule NamuyoriWeb.CategoryLive.FormComponent do
   end
 
   defp save_category(socket, :edit, category_params) do
-    case Recipes.update_category(socket.assigns.category, category_params) do
+    case CookingRecipes.update_category(socket.assigns.category, category_params) do
       {:ok, category} ->
         notify_parent({:saved, category})
 
@@ -70,7 +68,7 @@ defmodule NamuyoriWeb.CategoryLive.FormComponent do
   end
 
   defp save_category(socket, :new, category_params) do
-    case Recipes.create_category(category_params) do
+    case CookingRecipes.create_category(category_params) do
       {:ok, category} ->
         notify_parent({:saved, category})
 
